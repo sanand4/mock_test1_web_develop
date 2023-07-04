@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .error {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Registration Form</h1>
+    <form id="registrationForm" onsubmit="validateForm(event)">
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" required />
+        <span id="nameError" class="error"></span>
+      </div>
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" required />
+        <span id="emailError" class="error"></span>
+      </div>
+      <div>
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" required />
+        <span id="phoneError" class="error"></span>
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" required />
+        <span id="passwordError" class="error"></span>
+      </div>
+      <div>
+        <label for="age">Age:</label>
+        <input type="number" id="age" required />
+        <span id="ageError" class="error"></span>
+      </div>
+      <div>
+        <label for="gender">Gender:</label>
+        <select id="gender" required>
+          <option value="">Select</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        <span id="genderError" class="error"></span>
+      </div>
+      <div>
+        <label for="date">Date:</label>
+        <input type="date" id="date" required />
+        <span id="dateError" class="error"></span>
+      </div>
+      <div>
+        <label for="color">Favorite Color:</label>
+        <input type="color" id="color" required />
+        <span id="colorError" class="error"></span>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+
+    <script>
+      function validateForm(event) {
+        event.preventDefault(); // Prevent form submission
+
+        // Retrieve form inputs
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+        let phone = document.getElementById("phone").value;
+        let password = document.getElementById("password").value;
+        let age = document.getElementById("age").value;
+        let gender = document.getElementById("gender").value;
+        let date = document.getElementById("date").value;
+        let color = document.getElementById("color").value;
+
+        // Reset error messages
+        let errorElements = document.getElementsByClassName("error");
+        for (let i = 0; i < errorElements.length; i++) {
+          errorElements[i].textContent = "";
+        }
+
+        // Perform validation
+        let isValid = true;
+        if (!name) {
+          document.getElementById("nameError").textContent = "Name is required";
+          isValid = false;
+        }
+
+        if (!email) {
+          document.getElementById("emailError").textContent =
+            "Email is required";
+          isValid = false;
+        }
+
+        // Add more validation rules for other fields...
+
+        // Submit the form if all inputs are valid
+        if (isValid) {
+          document.getElementById("registrationForm").submit();
+        }
+      }
+    </script>
+  </body>
+</html>
